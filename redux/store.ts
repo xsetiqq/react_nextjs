@@ -1,9 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { sneakersApi } from "./sneakersApi"; // мы создадим это ниже
+import { sneakersApi } from "./sneakersApi";
+import favoritesReducer from "./favoritesSlice";
 
 export const store = configureStore({
   reducer: {
     [sneakersApi.reducerPath]: sneakersApi.reducer,
+
+    favorites: favoritesReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(sneakersApi.middleware),

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useGetSneakersQuery } from "@/redux/sneakersApi";
 import ProductCard from "./ProductCard";
 import FilterPanel from "./FilterPanel";
+import SkeletonGrid from "./SkeletonGrid";
 
 export default function CardList() {
   const [searchValue, setSearchValue] = useState("");
@@ -37,12 +38,13 @@ export default function CardList() {
       />
 
       {isLoading ? (
-        <div>Загрузка...</div>
+        <SkeletonGrid />
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
           {filteredData.map((item) => (
             <ProductCard
               key={item.id}
+              id={item.id}
               title={item.title}
               price={item.price}
               imageUrl={item.imageUrl}
