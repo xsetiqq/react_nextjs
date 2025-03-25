@@ -5,6 +5,12 @@ import { Heart, Plus } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleFavorite } from "@/redux/favoritesSlice";
 import { RootState } from "@/redux/store";
+import {
+  addToCart,
+  increaseQuantity,
+  decreaseQuantity,
+  removeFromCart,
+} from "@/redux/cartSlice";
 
 interface Props {
   id: number;
@@ -20,12 +26,21 @@ export default function ProductCard({ id, title, price, imageUrl }: Props) {
     state.favorites.favoriteIds.includes(id)
   );
 
+  const cartItem = useSelector((state: RootState) =>
+    state.cart.items.find((item) => item.id === id)
+  );
+
   const handleToggleFavorite = () => {
     dispatch(toggleFavorite(id));
   };
 
   return (
-    <div className="rounded-2xl border border-gray-200 p-4 relative hover:shadow-md transition">
+    <div
+      className={`rounded-2xl p-4 relative hover:shadow-md transition ${
+        cartItem ? "border-amber-200 bg-amber-50" : "border-gray-200"
+      } border`}
+    >
+      {/* ❤️ Лайк */}
       <button
         onClick={handleToggleFavorite}
         className="absolute top-4 left-4 text-gray-400 hover:text-red-500 transition"
@@ -40,6 +55,7 @@ export default function ProductCard({ id, title, price, imageUrl }: Props) {
         />
       </button>
 
+      {/* 👟 Картинка */}
       <div className="mb-4 flex items-center justify-center">
         <Image
           src={imageUrl}
@@ -50,19 +66,53 @@ export default function ProductCard({ id, title, price, imageUrl }: Props) {
         />
       </div>
 
+      {/* 📝 Название */}
       <h3 className="text-sm font-medium leading-tight mb-2">
         Mens Sneakers <br />
         {title}
       </h3>
 
+      {/* 💵 Цена и кнопки */}
       <div className="flex items-center justify-between mt-2">
         <div>
           <div className="text-xs text-gray-400">PRICE:</div>
           <div className="text-base font-bold">{price} $</div>
         </div>
-        <button className="border border-gray-300 rounded-lg p-1 hover:bg-gray-100">
-          <Plus size={16} />
-        </button>
+
+        {/* 🛒 Если товар уже в корзине → – qty + */}
+        {cartItem ? (
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => {
+                if (cartItem.quantity === 1) {
+                  dispatch(removeFromCart(id));
+                } else {
+                  dispatch(decreaseQuantity(id));
+                }
+              }}
+              className="border px-2 rounded hover:bg-gray-100 text-gray-600"
+            >
+              –
+            </button>
+            <span className="text-sm">{cartItem.quantity}</span>
+            <button
+              onClick={() => dispatch(increaseQuantity(id))}
+              className="border px-2 rounded hover:bg-gray-100 text-gray-600"
+            >
+              +
+            </button>
+          </div>
+        ) : (
+          <button
+            onClick={() => dispatch(addToCart(id))}
+            className="border border-gray-300 rounded-lg p-1 hover:bg-gray-100 transition"
+          >
+            <Plus
+              size={16}
+              className="text-gray-400 hover:text-red-500 hover:fill-red-500"
+            />
+          </button>
+        )}
       </div>
     </div>
   );

@@ -24,10 +24,13 @@ export default function Header() {
         </Link>
 
         <ul className="flex items-center gap-10">
-          <li className="flex text-gray-500 items-center gap-2 cursor-pointer hover:text-black">
+          <Link
+            href="/cart"
+            className="flex text-gray-500 items-center gap-2 cursor-pointer hover:text-black"
+          >
             <ShoppingCart color="#6a7282" />
             300 $
-          </li>
+          </Link>
 
           <Link
             href="/favorites"
@@ -37,10 +40,13 @@ export default function Header() {
             <p>Favorite</p>
           </Link>
 
-          <li className="flex  text-gray-500 gap-2 cursor-pointer items-center hover:text-black">
+          <Link
+            href="/404"
+            className="flex  text-gray-500 gap-2 cursor-pointer items-center hover:text-black"
+          >
             <CircleUserRound color="#6a7282" />
             <p>Profile</p>
-          </li>
+          </Link>
         </ul>
       </Container>
     </header>
