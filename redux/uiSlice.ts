@@ -1,10 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+interface UIState {
+  isCartOpen: boolean;
+  isMenuOpen: boolean;
+}
+
+const initialState: UIState = {
+  isCartOpen: false,
+  isMenuOpen: false,
+};
+
 const uiSlice = createSlice({
   name: "ui",
-  initialState: {
-    isCartOpen: false,
-  },
+  initialState,
   reducers: {
     openCart: (state) => {
       state.isCartOpen = true;
@@ -12,8 +20,14 @@ const uiSlice = createSlice({
     closeCart: (state) => {
       state.isCartOpen = false;
     },
+    openMenu: (state) => {
+      state.isMenuOpen = true;
+    },
+    closeMenu: (state) => {
+      state.isMenuOpen = false;
+    },
   },
 });
 
-export const { openCart, closeCart } = uiSlice.actions;
+export const { openCart, closeCart, openMenu, closeMenu } = uiSlice.actions;
 export default uiSlice.reducer;
