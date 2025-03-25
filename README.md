@@ -36,23 +36,6 @@ npm run build
 npm start
 ```
 
-If you want to export for GitHub Pages:
-
-1. Add to `next.config.js`:
-   ```js
-   const nextConfig = {
-     output: "export",
-     basePath: "/react_nextjs",
-     assetPrefix: "/react_nextjs/",
-   };
-   module.exports = nextConfig;
-   ```
-
-2. Run:
-   ```bash
-   npm run build
-   ```
-
 ## Folder Structure
 
 - `app/` – App directory structure (App Router)
