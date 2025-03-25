@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SneakersPL 👟
 
-## Getting Started
+**SneakersPL** is a fully responsive sneaker store built with **Next.js 15**, **Tailwind CSS v4**, **Redux Toolkit**, and **TypeScript**. It offers key features such as dynamic cart, favorites management, filtering and sorting, responsive UI, and local storage persistence.
 
-First, run the development server:
+##  Features
+
+-  Search, sort, and filter sneakers by price
+-  Add/remove products from cart with quantity management
+-  Add/remove favorites and view them on a separate page
+-  Fully responsive with custom mobile adaptations
+- Global state management with Redux Toolkit
+-  Cart and favorites saved in localStorage
+-  Static export support and GitHub Pages ready
+
+## 🛠 Tech Stack
+
+- [Next.js 15 (App Router)](https://nextjs.org/)
+- [Tailwind CSS v4](https://tailwindcss.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [Mokky API](https://bf8500b0f4f0c135.mokky.dev/items) for fake data
+
+##  Installation
 
 ```bash
+git clone https://github.com/xsetiqq/react_nextjs.git
+cd react_nextjs
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🧾 Build & Export
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+If you want to export for GitHub Pages:
 
-## Learn More
+1. Add to `next.config.js`:
+   ```js
+   const nextConfig = {
+     output: "export",
+     basePath: "/react_nextjs",
+     assetPrefix: "/react_nextjs/",
+   };
+   module.exports = nextConfig;
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Run:
+   ```bash
+   npm run build
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Folder Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `app/` – App directory structure (App Router)
+- `components/` – UI and shared components
+- `redux/` – Redux Toolkit slices and store
+- `utils/` – Utility functions (e.g. localStorage handling)
+- `types/` – TypeScript type definitions
 
-## Deploy on Vercel
+##  Links
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Live Demo (Netlify)](https://sneakerspl.netlify.app/)
