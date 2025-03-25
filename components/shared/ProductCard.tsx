@@ -69,14 +69,14 @@ export default function ProductCard({ id, title, price, imageUrl }: Props) {
         {title}
       </h3>
 
-      <div className="flex items-center justify-between mt-2">
+      <div className="mt-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <div>
           <div className="text-xs text-gray-400">PRICE:</div>
           <div className="text-base font-bold">{price} $</div>
         </div>
 
         {cartItem ? (
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 sm:ml-auto">
             <button
               onClick={() => {
                 if (cartItem.quantity === 1) {
@@ -103,7 +103,7 @@ export default function ProductCard({ id, title, price, imageUrl }: Props) {
               dispatch(addToCart(id));
               window.dispatchEvent(new Event("cart-popup"));
             }}
-            className="border border-gray-300 rounded-lg p-1 hover:bg-gray-100 transition"
+            className="border border-gray-300 rounded-lg p-1 hover:bg-gray-100 transition sm:ml-auto"
           >
             <Plus
               size={16}

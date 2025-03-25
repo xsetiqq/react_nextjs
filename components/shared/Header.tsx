@@ -27,7 +27,6 @@ export default function Header() {
           </div>
         </Link>
 
-        {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-10">
           <Link
             href="/cart"
@@ -54,7 +53,6 @@ export default function Header() {
           </Link>
         </ul>
 
-        {/* Mobile Burger Icon */}
         <button
           className="md:hidden"
           onClick={() => setIsOpen((prev) => !prev)}
@@ -63,7 +61,6 @@ export default function Header() {
         </button>
       </Container>
 
-      {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden px-6 pb-4">
           <ul className="flex flex-col gap-4">

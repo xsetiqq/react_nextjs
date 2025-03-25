@@ -37,7 +37,6 @@ export default function CartPopup({ visible }: Props) {
   if (!visible || totalCount === 0) return null;
 
   return isMobile ? (
-    // 🟢 Mobile circle popup
     <button
       onClick={() => dispatch(openCart())}
       className="fixed bottom-20 right-6 z-50 w-14 h-14 rounded-full bg-black text-white flex items-center justify-center shadow-lg"
@@ -52,7 +51,6 @@ export default function CartPopup({ visible }: Props) {
       </div>
     </button>
   ) : (
-    // 🖥️ Desktop popup box
     <div
       className={`fixed bottom-6 left-6 z-50 w-[300px] bg-white border border-gray-200 rounded-xl shadow-lg p-4 transition-all duration-300
       ${visible ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"}`}
