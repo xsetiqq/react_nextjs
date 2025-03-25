@@ -1,8 +1,10 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { Container } from "./Bontainer";
 import { CircleUserRound, Heart, ShoppingCart } from "lucide-react";
 import Link from "next/link";
+import Total from "./Total";
 
 export default function Header() {
   return (
@@ -29,7 +31,7 @@ export default function Header() {
             className="flex text-gray-500 items-center gap-2 cursor-pointer hover:text-black"
           >
             <ShoppingCart color="#6a7282" />
-            300 $
+            <Total /> $
           </Link>
 
           <Link

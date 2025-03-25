@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const banners = ["/banner.png", "/banner2.png", "/banner3.png"];
+const banners = ["/banner3.png", "/banner2.png", "/banner.png"];
 
 export default function Banner() {
   const [index, setIndex] = useState(0);
@@ -45,7 +45,6 @@ export default function Banner() {
         ))}
       </div>
 
-      {/* Кнопка влево */}
       <button
         onClick={() => slideTo(index - 1, "left")}
         className="absolute top-1/2 left-4 -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 shadow-md transition z-10"
@@ -53,7 +52,6 @@ export default function Banner() {
         <ChevronLeft size={20} />
       </button>
 
-      {/* Кнопка вправо */}
       <button
         onClick={() => slideTo(index + 1, "right")}
         className="absolute top-1/2 right-4 -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 shadow-md transition z-10"
