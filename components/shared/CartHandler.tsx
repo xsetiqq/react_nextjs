@@ -7,17 +7,15 @@ import { RootState } from "@/redux/store";
 
 export default function CartHandler() {
   const [visible, setVisible] = useState(false);
-  const [hasMounted, setHasMounted] = useState(false); // 💡 <== ключ
+  const [hasMounted, setHasMounted] = useState(false);
 
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const isCartOpen = useSelector((state: RootState) => state.ui.isCartOpen);
 
-  // ⏳ Отмечаем, что компонент отрендерился на клиенте
   useEffect(() => {
     setHasMounted(true);
   }, []);
 
-  // слушаем кастомное событие для показа CartPopup
   useEffect(() => {
     const show = () => setVisible(true);
     window.addEventListener("cart-popup", show);
@@ -30,7 +28,6 @@ export default function CartHandler() {
     }
   }, [isCartOpen, cartItems]);
 
-  // 💣 НИЧЕГО не рендерим до hydration
   if (!hasMounted) return null;
 
   return <CartPopup visible={visible} />;

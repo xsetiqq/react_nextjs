@@ -18,8 +18,8 @@ const interMono = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "React Snikers",
-  description: "Магазин лучших кроссовок",
+  title: "SnikersPL",
+  description: "Store for the best sneakers",
 };
 
 export default function RootLayout({
