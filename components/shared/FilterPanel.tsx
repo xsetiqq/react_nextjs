@@ -40,10 +40,14 @@ export default function FilterPanel({
               Price from:
             </label>
             <input
-              type="number"
+              type="text"
               placeholder="from"
-              value={minPrice}
-              onChange={(e) => onMinPriceChange(Number(e.target.value))}
+              value={minPrice.toString()}
+              onChange={(e) => {
+                const raw = e.target.value.replace(/^0+(?!$)/, "");
+                const numeric = raw.replace(/\D/g, "");
+                onMinPriceChange(Number(numeric));
+              }}
               className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300 transition"
               min={0}
             />
@@ -54,10 +58,14 @@ export default function FilterPanel({
               to:
             </label>
             <input
-              type="number"
+              type="text"
               placeholder="to"
-              value={maxPrice}
-              onChange={(e) => onMaxPriceChange(Number(e.target.value))}
+              value={maxPrice.toString()}
+              onChange={(e) => {
+                const raw = e.target.value.replace(/^0+(?!$)/, "");
+                const numeric = raw.replace(/\D/g, "");
+                onMaxPriceChange(Number(numeric));
+              }}
               className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300 transition"
               min={0}
             />
