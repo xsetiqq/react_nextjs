@@ -10,7 +10,7 @@
 -  Fully responsive with custom mobile adaptations
 - Global state management with Redux Toolkit
 -  Cart and favorites saved in localStorage
--  Static export support and GitHub Pages ready
+
 
 ##  Tech Stack
 
