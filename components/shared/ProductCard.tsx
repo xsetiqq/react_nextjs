@@ -76,7 +76,7 @@ export default function ProductCard({ id, title, price, imageUrl }: Props) {
         </div>
 
         {cartItem ? (
-          <div className="flex items-center gap-2 sm:ml-auto">
+          <div className="flex items-center gap-2 sm:ml-auto sm:justify-end w-full">
             <button
               onClick={() => {
                 if (cartItem.quantity === 1) {
@@ -103,11 +103,11 @@ export default function ProductCard({ id, title, price, imageUrl }: Props) {
               dispatch(addToCart(id));
               window.dispatchEvent(new Event("cart-popup"));
             }}
-            className="border border-gray-300 rounded-lg p-1 hover:bg-gray-100 transition sm:ml-auto"
+            className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-lg hover:bg-gray-100 transition"
           >
             <Plus
               size={16}
-              className="text-gray-400 hover:text-red-500 hover:fill-red-500"
+              className="text-gray-400 hover:text-red-500 hover:fill-red-500 items-center"
             />
           </button>
         )}
