@@ -11,6 +11,7 @@ import {
   decreaseQuantity,
   removeFromCart,
 } from "@/redux/cartSlice";
+import Link from "next/link";
 
 interface Props {
   id: number;
@@ -46,29 +47,28 @@ export default function ProductCard({ id, title, price, imageUrl }: Props) {
       >
         <Heart
           size={20}
-          className={`transition ${
-            isFavorite
-              ? "text-red-500 fill-red-500"
-              : "text-gray-400 hover:text-red-500 hover:fill-red-500"
-          }`}
+          className={`transition cursor-pointer 
+    ${
+      isFavorite
+        ? "fill-red-500 text-red-500 hover:text-red-900 hover:fill-red-900"
+        : "text-gray-400 hover:text-red-500 hover:fill-red-500"
+    }
+  `}
         />
       </button>
+      <Link href={`/product/${id}`} className="block">
+        <div className="mb-4 flex items-center justify-center">
+          <Image
+            src={imageUrl}
+            alt={title}
+            width={150}
+            height={100}
+            className="object-contain"
+          />
+        </div>
 
-      <div className="mb-4 flex items-center justify-center">
-        <Image
-          src={imageUrl}
-          alt={title}
-          width={150}
-          height={100}
-          className="object-contain"
-        />
-      </div>
-
-      <h3 className="text-sm font-medium leading-tight mb-2">
-        Mens Sneakers <br />
-        {title}
-      </h3>
-
+        <h3 className="text-sm font-medium leading-tight mb-2">{title}</h3>
+      </Link>
       <div className="mt-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <div>
           <div className="text-xs text-gray-400">PRICE:</div>
@@ -76,7 +76,7 @@ export default function ProductCard({ id, title, price, imageUrl }: Props) {
         </div>
 
         {cartItem ? (
-          <div className="flex items-center gap-2 sm:ml-auto sm:justify-end w-full">
+          <div className="flex gap-2 sm:ml-auto sm:justify-end ">
             <button
               onClick={() => {
                 if (cartItem.quantity === 1) {
@@ -89,7 +89,7 @@ export default function ProductCard({ id, title, price, imageUrl }: Props) {
             >
               –
             </button>
-            <span className="text-sm">{cartItem.quantity}</span>
+            <span className="text-sm pt-0.5">{cartItem.quantity}</span>
             <button
               onClick={() => dispatch(increaseQuantity(id))}
               className="border px-2 rounded hover:bg-gray-100 text-gray-600"

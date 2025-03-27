@@ -8,7 +8,10 @@ export const sneakersApi = createApi({
     getSneakers: builder.query<snekerType[], void>({
       query: () => "items",
     }),
+    getSneakerById: builder.query<snekerType, string>({
+      query: (id) => `items/${id}`,
+    }),
   }),
 });
 
-export const { useGetSneakersQuery } = sneakersApi;
+export const { useGetSneakersQuery, useGetSneakerByIdQuery } = sneakersApi;
