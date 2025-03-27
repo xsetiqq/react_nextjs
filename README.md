@@ -1,6 +1,6 @@
 # SneakersPL 
 
-**SneakersPL** is a fully responsive sneaker store built with **Next.js 15**, **Tailwind CSS v4**, **Redux Toolkit**, and **TypeScript**. It offers key features such as dynamic cart, favorites management, filtering and sorting, responsive UI, and local storage persistence.
+**SneakersPL** is a fully responsive sneaker store built with **Next.js 15**, **Tailwind CSS v4**, **Redux Toolkit**, and **TypeScript**. It offers key features such as dynamic cart, favorites management, filtering and sorting, responsive UI, and local storage persistence. I got the idea from [here](https://www.figma.com/design/fw0toTyXMwM1y4WIe0YFrJ/React-Sneakers?node-id=60-243&t=hRSc2wjwiMtJmj1b-0).
 
 ##  Features
 
