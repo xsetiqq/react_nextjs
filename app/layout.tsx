@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "../components/shared/Header";
 
 import { ReduxProvider } from "@/components/shared/ReduxProvider";
+import { Toaster } from "react-hot-toast";
 
 const kanitSans = Kanit({
   variable: "--font-kanit",
@@ -33,6 +34,7 @@ export default function RootLayout({
         className={`${kanitSans.variable} ${interMono.variable} bg-blue-100 antialiased`}
       >
         <ReduxProvider>
+          <Toaster position="top-center" toastOptions={{ duration: 2000 }} />
           <main className="min-h-screen flex justify-center items-start p-4 md:p-6">
             <div className="bg-white w-full max-w-screen-xl rounded-xl shadow-md">
               <Header />

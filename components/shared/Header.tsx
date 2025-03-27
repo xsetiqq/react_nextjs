@@ -1,14 +1,22 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Container } from "./Bontainer";
 import { CircleUserRound, Heart, Menu, ShoppingCart, X } from "lucide-react";
 import Link from "next/link";
 import Total from "./Total";
+import { useSelector } from "react-redux";
+import { RootState } from "./../../redux/store";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-
+  const favoriteIds = useSelector(
+    (state: RootState) => state.favorites.favoriteIds
+  );
+  const [hasMounted, setHasMounted] = useState(false);
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
   return (
     <header className="border-b border-gray-500">
       <Container className="flex items-center justify-between py-8">
@@ -38,9 +46,16 @@ export default function Header() {
 
           <Link
             href="/favorites"
-            className="flex text-gray-500 gap-2 cursor-pointer items-center hover:text-black"
+            className="relative flex text-gray-500 gap-2 cursor-pointer items-center hover:text-black"
           >
-            <Heart color="#6a7282" />
+            <div className="relative">
+              <Heart color="#6a7282" />
+              {hasMounted && favoriteIds.length - 1 > 0 && (
+                <span className="absolute -top-1 -right-2 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5 leading-none">
+                  {favoriteIds.length - 1}
+                </span>
+              )}
+            </div>
             <p>Favorite</p>
           </Link>
 
