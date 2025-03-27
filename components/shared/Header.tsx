@@ -50,7 +50,7 @@ export default function Header() {
           >
             <div className="relative">
               <Heart color="#6a7282" />
-              {hasMounted && favoriteIds.length - 1 > 0 && (
+              {hasMounted && favoriteIds.length > 0 && (
                 <span className="absolute -top-1 -right-2 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5 leading-none">
                   {favoriteIds.length - 1}
                 </span>
